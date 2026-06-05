@@ -33,11 +33,8 @@ export const Pagination = ({
         <a
           data-cy="prevLink"
           className="page-link"
-          href="#${page}"
-          onClick={eventClick => {
-            eventClick.preventDefault();
-            handlePrev();
-          }}
+          href="#prev"
+          onClick={() => handlePrev()}
           aria-disabled={currentPage === 1}
         >
           «
@@ -53,18 +50,13 @@ export const Pagination = ({
             data-cy="pageLink"
             className="page-link"
             href={`#${page}`}
-            onClick={eventClick => {
-              eventClick.preventDefault();
-
-              if (page !== currentPage) {
-                onPageChange(page);
-              }
-            }}
+            onClick={() => onPageChange(page)}
           >
             {page}
           </a>
         </li>
       ))}
+
       <li
         className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}
       >
@@ -73,10 +65,7 @@ export const Pagination = ({
           className="page-link"
           href="#next"
           aria-disabled={currentPage === totalPages}
-          onClick={eventClick => {
-            eventClick.preventDefault();
-            handleNext();
-          }}
+          onClick={() => handleNext()}
         >
           »
         </a>
